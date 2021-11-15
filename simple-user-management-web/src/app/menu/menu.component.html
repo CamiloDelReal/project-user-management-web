@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <span>User Management</span>
+  <span fxFlex="grow"></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button mat-button aria-label="Users" [routerLink]="['users']" [routerLinkActive]="['mat-accent']" [routerLinkActiveOptions]="{exact: true}">
+      <mat-icon>people</mat-icon>
+      Users
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="More options">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLinkActive]="['mat-accent']"  (click)="navigateToDetails()">
+        <mat-icon>account_circle</mat-icon>
+        <span>My Profile</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+
+
+
+</mat-toolbar>
