@@ -5,7 +5,7 @@ Web application to perform a simple users management. It requires the project [U
 - Users
   * CRUD operations
   * JWT authentication
-- Docker compose script config for requirements
+- Docker compose script config for deployment
 
 ### Screenshots
 <p float="left">
