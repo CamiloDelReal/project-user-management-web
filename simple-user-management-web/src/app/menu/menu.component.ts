@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {UsersService} from "../services/users.service";
 
 @Component({
   selector: 'app-menu',
@@ -9,6 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class MenuComponent implements OnInit {
 
   constructor(
+    private usersService: UsersService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -16,9 +18,22 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get isUserLoggedIn(): boolean {
+    return this.usersService.isUserLoggedIn();
+  }
+
+  get isUserAdmin(): boolean {
+    return this.usersService.isUserAdmin();
+  }
+
   navigateToDetails() {
-    this.router.navigate(['/users', 2, 'details'], {
+    this.router.navigate(['/users', this.usersService.getUserLoggedIn()?.id, 'details'], {
       relativeTo: this.route
     })
+  }
+
+  logout() {
+    this.usersService.removeAuth()
+    this.router.navigate(['/login'])
   }
 }

@@ -1,1 +1,65 @@
-<p>user-details works!</p>
+<ng-container *ngIf="!loading && !error">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-card class="height-auto mat-elevation-z4 mt-2" fxFlex.xs="95%" fxFlex.sm="60%" fxFlex.md="45%" fxFlex.lg="25%"
+              fxFlex.xl="20%">
+      <mat-card-content fxLayout="column">
+        <mat-card-title>{{ user.firstName + ' ' + user.lastName }}</mat-card-title>
+        <span fxFlex="16px"></span>
+        <table>
+          <tbody>
+          <tr>
+            <td><strong>First name:</strong></td>
+            <td>{{user.firstName}}</td>
+          </tr>
+          <tr>
+            <td><strong>Last name:</strong></td>
+            <td>{{user.lastName}}</td>
+          </tr>
+          <tr>
+            <td><strong>Email:</strong></td>
+            <td>{{user.email}}</td>
+          </tr>
+          <tr>
+            <td><strong>Roles:</strong></td>
+            <td>{{user.roles | roles}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <div fxFlex></div>
+        <button mat-stroked-button color="primary" (click)="edit()">Edit</button>
+        <button mat-raised-button color="accent" (click)="deleteUser()">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="loading">
+  <div fxFill fxLayout="row" fxLayoutAlign="center center">
+    <mat-spinner mode="indeterminate"></mat-spinner>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="error">
+  <div fxFill fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="height-auto mat-elevation-z0 card-error-outline" fxFlex.xs="95%" fxFlex.sm="75%" fxFlex.md="50%"
+              fxFlex.lg="30%"
+              fxFlex.xl="30%">
+      <mat-card-content fxLayout="column">
+        <mat-card class="height-auto mat-elevation-z0">
+          <mat-card-content fxLayout="row" fxLayoutAlign="center center" fxFill>
+            <span class="mat-display-1">{{ error }}</span>
+          </mat-card-content>
+        </mat-card>
+        <span fxFlex="12px"></span>
+      </mat-card-content>
+      <mat-card-actions>
+        <span fxFlex></span>
+        <button mat-raised-button (click)="tryAgain()">Try again</button>
+        <span fxFlex></span>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-container>

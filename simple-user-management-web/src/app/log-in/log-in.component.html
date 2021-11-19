@@ -1,21 +1,35 @@
 <div fxFill fxLayout="row" fxLayoutAlign="center center">
-  <mat-card class="height-auto mat-elevation-z4" fxFlex.xs="95%" fxFlex.sm="60%" fxFlex.md="45%" fxFlex.lg="25%" fxFlex.xl="20%">
-    <mat-card-content fxLayout="column">
-      <mat-card-title>Login</mat-card-title>
-      <span fxFlex="16px"></span>
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput>
-        <mat-icon matSuffix>email</mat-icon>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput>
-        <mat-icon matSuffix>key</mat-icon>
-      </mat-form-field>
-      <button mat-raised-button color="primary" fxFill>LogIn</button>
-      <span fxFlex="8px"></span>
-      <button mat-stroked-button color="primary" fxFill>SignUp</button>
-    </mat-card-content>
+  <mat-card class="height-auto mat-elevation-z4" fxFlex.xs="95%" fxFlex.sm="60%" fxFlex.md="45%" fxFlex.lg="25%"
+            fxFlex.xl="20%">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <mat-card-content fxLayout="column">
+        <mat-card-title>Login</mat-card-title>
+        <span fxFlex="16px"></span>
+        <ng-container *ngIf="error != null">
+          <mat-card class="height-auto mat-elevation-z0 card-error text-white">
+            <mat-card-content fxLayout="row" fxFlexAlign="center">
+              <span>{{ error }}</span>
+            </mat-card-content>
+          </mat-card>
+          <span fxFlex="12px"></span>
+        </ng-container>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" name="username" formControlName="username">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" name="password" formControlName="password">
+          <mat-icon matSuffix>key</mat-icon>
+        </mat-form-field>
+
+        <mat-progress-bar mode="indeterminate" [ngClass]="loading ? 'show' : 'hide'" color="accent"></mat-progress-bar>
+        <span fxFlex="8px"></span>
+        <button mat-raised-button color="primary" fxFill type="submit">LogIn</button>
+        <span fxFlex="8px"></span>
+        <button mat-stroked-button color="primary" (click)="createUser()" fxFill>SignUp</button>
+      </mat-card-content>
+    </form>
   </mat-card>
 </div>

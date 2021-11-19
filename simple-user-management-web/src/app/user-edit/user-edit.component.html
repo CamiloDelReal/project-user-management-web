@@ -1,1 +1,60 @@
-<p>user-edit works!</p>
+<div fxLayout="row" fxLayoutAlign="center">
+  <mat-card class="height-auto mat-elevation-z4 mt-2" fxFlex.xs="95%" fxFlex.sm="60%" fxFlex.md="45%" fxFlex.lg="25%"
+            fxFlex.xl="20%">
+    <form [formGroup]="userForm" (ngSubmit)="save()">
+      <mat-card-content fxLayout="column">
+        <mat-card-title>Login</mat-card-title>
+        <span fxFlex="16px"></span>
+        <ng-container *ngIf="error != null">
+          <mat-card class="height-auto mat-elevation-z0 card-error text-white">
+            <mat-card-content fxLayout="row" fxFlexAlign="center">
+              <span>{{ error }}</span>
+            </mat-card-content>
+          </mat-card>
+          <span fxFlex="12px"></span>
+        </ng-container>
+        <ng-container *ngIf="success">
+          <mat-card class="height-auto mat-elevation-z0 card-success text-white">
+            <mat-card-content fxLayout="row" fxFlexAlign="center">
+              <span>Data saved</span>
+            </mat-card-content>
+          </mat-card>
+          <span fxFlex="12px"></span>
+        </ng-container>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput type="text" name="firstName" formControlName="firstName">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput type="text" name="lastName" formControlName="lastName">
+          <mat-icon matSuffix>key</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" name="email" formControlName="email">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="text" name="password" formControlName="password">
+          <mat-icon matSuffix>key</mat-icon>
+        </mat-form-field>
+
+        <div fxFlex="row" fxLayoutAlign="left center">
+          <span>Role: </span>
+          <span fxFlex="12px"></span>
+          <mat-slide-toggle name="role" formControlName="role">Administrator</mat-slide-toggle>
+        </div>
+
+        <span fxFlex="24px"></span>
+
+        <mat-progress-bar mode="indeterminate" [ngClass]="loading ? 'show' : 'hide'" color="accent"></mat-progress-bar>
+        <span fxFlex="8px"></span>
+        <button mat-raised-button color="primary" fxFill type="submit">Save</button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>
+

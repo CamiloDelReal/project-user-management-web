@@ -6,6 +6,8 @@ import {UserDetailsComponent} from "./user-details/user-details.component";
 import {UserEditComponent} from "./user-edit/user-edit.component";
 import {SignUpComponent} from "./sign-up/sign-up.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
+import {AdminGuard} from "./guards/admin.guard";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -22,14 +24,20 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    component: UsersComponent
+    component: UsersComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'users/:id/details',
-    component: UserDetailsComponent
+    component: UserDetailsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'users/:id/edit',
+    component: UserEditComponent
+  },
+  {
+    path: 'users/create',
     component: UserEditComponent
   },
   {

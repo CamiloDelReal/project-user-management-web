@@ -53,6 +53,12 @@ import {LayoutModule} from "@angular/cdk/layout";
 import {MatDialogModule} from "@angular/material/dialog";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {NotFoundComponent} from './not-found/not-found.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {TokenInterceptorService} from "./services/token-interceptor.service";
+import { RolesPipe } from './pipes/roles.pipe';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   exports: [
@@ -103,7 +109,9 @@ import {NotFoundComponent} from './not-found/not-found.component';
     LayoutModule,
     FlexLayoutModule
   ],
-  declarations: []
+  declarations: [
+
+  ]
 })
 export class MaterialModule {
 }
@@ -117,16 +125,30 @@ export class MaterialModule {
     UserEditComponent,
     SignUpComponent,
     LogInComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    RolesPipe,
+    ConfirmDeleteComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
