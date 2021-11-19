@@ -9,7 +9,7 @@ Web application to perform a simple users management. It requires the project [U
 
 ### Screenshots
 <p float="left">
-<img src="https://github.com/CamiloDelReal/project-user-management-web/blob/main/screenshots/sshot-1.png" width="50%" height="50%" />
-<img src="https://github.com/CamiloDelReal/project-user-management-web/blob/main/screenshots/sshot-2.png" width="50%" height="50%" />
-<img src="https://github.com/CamiloDelReal/project-user-management-web/blob/main/screenshots/sshot-2.png" width="50%" height="50%" />
+<img src="https://github.com/CamiloDelReal/project-user-management-web/blob/main/screenshots/sshot-1.png" width="35%" height="35%" />
+<img src="https://github.com/CamiloDelReal/project-user-management-web/blob/main/screenshots/sshot-2.png" width="35%" height="35%" />
+<img src="https://github.com/CamiloDelReal/project-user-management-web/blob/main/screenshots/sshot-2.png" width="35%" height="35%" />
 </p>
