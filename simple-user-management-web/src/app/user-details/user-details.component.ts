@@ -85,6 +85,6 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   }
 
   edit() {
-    this.router.navigate(['users', 4, 'edit'])
+    this.router.navigate(['users', this.lastUserId, 'edit'])
   }
 }
