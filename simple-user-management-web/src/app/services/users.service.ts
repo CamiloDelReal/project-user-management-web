@@ -64,7 +64,7 @@ export class UsersService {
   }
 
   isUserAdmin(): boolean {
-    const roles = this.decodedToken ? this.decodedToken['$security.authorities-key'].split('--') : [];
+    const roles = this.decodedToken ? this.decodedToken['authorities'].split('--') : [];
     return roles.find(it => it == Role.ADMINISTRATOR) != undefined;
   }
 
