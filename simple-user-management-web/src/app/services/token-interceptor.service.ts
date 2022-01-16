@@ -36,6 +36,7 @@ export class TokenInterceptorService implements HttpInterceptor {
       catchError((err) => {
         if (err instanceof HttpErrorResponse) {
           if (request.url != '/users/login' && (err.status === HttpStatusCode.Unauthorized || err.status === HttpStatusCode.Forbidden)) {
+            this.usersService.removeAuth()
             this.router.navigate(['login'], {
               queryParams: {
                 reason: 'Insufficient credentials access level'
