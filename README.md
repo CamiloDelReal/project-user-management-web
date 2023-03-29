@@ -1,5 +1,5 @@
 # User management web
-Web application to perform a simple users management. It requires the project [User management using JPA](https://github.com/CamiloDelReal/project-user-management-with-jpa-and-tests)
+Web application to perform a simple users management. It requires the project [User management using MySQL](https://github.com/CamiloDelReal/project-user-management-with-mysql)
 
 ### Features
 - Users
